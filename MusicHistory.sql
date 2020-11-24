@@ -39,11 +39,11 @@
 --   FROM Genre g 
 --   LEFT JOIN Song s ON g.Id = s.GenreId
 --   GROUP BY g.Label
---14)SELECT a.ArtistName, COUNT(Label) AS 'Number of Record Labels'
---   FROM Artist a
---   LEFT JOIN Album al ON al.ArtistId = a.Id
---   GROUP BY a.ArtistName
---   HAVING COUNT(Label) > 1;
+SELECT a.ArtistName, COUNT(DISTINCT Label) AS 'Number of Record Labels'
+FROM Artist a
+LEFT JOIN Album al ON al.ArtistId = a.Id
+GROUP BY a.ArtistName
+HAVING COUNT(DISTINCT Label) > 1;
 --15) SELECT  Title, AlbumLength AS 'Longest Album Duration'
 --    FROM Album 
 --    Where AlbumLength = (SELECT MAX(AlbumLength) FROM Album);
